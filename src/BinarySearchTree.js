@@ -97,23 +97,23 @@ class BinarySearchTree {
   }
 
   bfs(tree, values = []) {
-    const queue = new Queue();
-    queue.enqueue(tree);
-    let node = queue.dequeue();
-    while (node) {
-      values.push(node.value);
+    const queue = new Queue(); // create a new queue
+    queue.enqueue(tree); // start the traversal at the tree root and add the tree node to the queue
+    let node = queue.dequeue(); // removes element from the queue and assigns it to node (selects next node to be visited)
+    while (node) { // while the queue is not empty (as long is there is a node to visit)
+      values.push(node.value); // push value to output array (keeps track of the values of nodes visited)
 
-      if (node.left) {
-        queue.enqueue(node.left);
+      if (node.left) { // if node has left child
+        queue.enqueue(node.left); // add left child to the queue
       }
 
-      if (node.right) {
-        queue.enqueue(node.right);
+      if (node.right) { // if node has right child
+        queue.enqueue(node.right); // add right child to the queue
       }
-      node = queue.dequeue();
+      node = queue.dequeue(); // dequeue next node (prepares for next iteration of the while loop, selecting next node to be visited)
     }
 
-    return values;
+    return values; // return array of values
   }
 
   _replaceWith(node) {
