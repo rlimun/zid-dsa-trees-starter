@@ -62,10 +62,13 @@ class BinarySearchTree {
   }
 
   dfsInOrder(values = []) {
+    // First, process the left child recursively
     if (this.left) {
       values = this.left.dfsInOrder(values);
     }
+    // Next, process the current node
     values.push(this.value);
+    // Finally, process the right child recursively
     if (this.right) {
       values = this.right.dfsInOrder(values);
     }
@@ -73,10 +76,13 @@ class BinarySearchTree {
   }
 
   dfsPreOrder(values = []) {
+    // Current node is processed first
     values.push(this.value);
+    // Then left child is processed recursivley
     if (this.left) {
       values = this.left.dfsPreOrder(values);
     }
+    // Then right child is processed recursively
     if (this.right) {
       values = this.right.dfsPreOrder(values);
     }
@@ -84,12 +90,15 @@ class BinarySearchTree {
   }
 
   dfsPostOrder(values = []) {
+    // First, process the left child recursively
     if (this.left) {
       values = this.left.dfsPostOrder(values);
     }
+    // Next, process the right child recursively
     if (this.right) {
       values = this.right.dfsPostOrder(values);
     }
+    // Then process current node
     values.push(this.value);
     return values;
   }
